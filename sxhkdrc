@@ -1,0 +1,156 @@
+# web browser
+super + w
+	firefox
+
+# web Secundari
+super + g
+	google-chrome
+
+# Mocp musica
+super + n
+	tilix -e mocp -T /usr/share/moc/themes/transparent-background
+
+# ChangeWallpaper
+super + k
+	nitrogen /home/gonzales/Pictures/wallpaper
+
+# terminal
+super + Return
+	tilix
+
+super + shift + Return
+	tilix -p solid
+
+# Pcmafm
+super + e
+	nemo
+	# pcmanfm
+	# nutilus
+	# tilix -e ranger
+
+# Wifi
+super + u
+	tilix -e nmtui
+	#tilix -e wicd-curses
+
+# Help
+super + h
+	sh ./Documents/.sh_help.sh
+
+# Master
+super + m
+	tilix -e "alsamixer -g"
+
+# program launcher
+super + @space
+	rofi -show run -columns 3 -theme sidebar -opacity "80" -font 'Ubuntu 12'
+
+# Reset
+super + alt + r
+	bspc wm -r
+
+# Quit BSPWM
+super + alt + x
+	bspc quit
+
+# Poweroff
+super + alt + p
+	poweroff
+
+# Close and kill
+super + {_, shift + }q
+	bspc node -{c,k}
+
+# Focus the last desktop
+super + Tab
+	bspc desktop -f last
+
+Print
+	gnome-screenshot
+
+super + Print
+	shprint
+
+# Lock
+super + l
+	lock
+
+# --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+# - - window state - -
+# fullscreen
+super + f
+	bspc node -t fullscreen
+# Floating
+super + s
+	bspc node -t floating
+
+super + t
+	bspc node -t tiled
+
+super + shift + t
+	bspc node -t pseudo_tiled
+
+# ---- -- - - - - -- - - --- - -- - -- -- -- - -- - -- 
+
+# - - flags - -
+super + ctrl + {x,y,z}
+	bspc node -g {locked,sticky,private}
+
+# Fullscreen
+super + shift + f
+	bspc dekstop -l next
+
+# Mover Ventanas
+super + {_, shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Scalar Ventanas
+# expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# --- --- --- --- --- --- --- --- --- --- --- --- --- 
+# Selecciones
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + alt +{Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + alt + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + alt + space 
+    bspc node -p cancel
+
+# --- --- --- -- --- --- --- --- --- --- --- --- --- --- --- 
+
+XF86AudioMute
+	pactl set-sink-mute 0 toggle;pactl set-sink-mute 1 toggle
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +5%
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -5%
+
+XF86MonBrightnessUp
+	pylight -inc 3
+XF86MonBrightnessDown
+	pylight -dec 3
+
